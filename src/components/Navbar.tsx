@@ -16,6 +16,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import ConnectionForm from './ConnectionForm';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -27,6 +28,8 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     title: {
       flexGrow: 1,
+      marginLeft: 10,
+      textAlign: 'center' 
     },
     search: {
       position: 'relative',
@@ -73,7 +76,9 @@ export default function Navbar() {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorElCategories, setAnchorElCategories] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const openCategories = Boolean(anchorElCategories);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAuth(event.target.checked);
@@ -82,9 +87,15 @@ export default function Navbar() {
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
+  const handleMenuCategories = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElCategories(event.currentTarget);
+  };
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const handleCloseCategories = () => {
+    setAnchorElCategories(null);
   };
 
   return (
@@ -98,10 +109,17 @@ export default function Navbar() {
       <AppBar position="static">
         <Toolbar>
           <CustomDrawer />
+          <Button variant="outlined" color="inherit" onClick={handleMenuCategories} 
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true">
+            Categories
+          </Button>
           <Typography variant="h6" className={classes.title}>
-            Photos
+            Accueil
           </Typography>
 
+          {/* If user is connected */}
           {(auth === true) ? 
             <div>
               <IconButton aria-label="show 17 new notifications" color="inherit">
@@ -118,6 +136,8 @@ export default function Navbar() {
               >
                 <AccountCircle />
               </IconButton>
+
+              {/* User Floating Menu*/}
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
@@ -139,7 +159,29 @@ export default function Navbar() {
             </div>
           : 
           <ConnectionForm />}
-          
+
+          {/* Categories Floating Menu*/}
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorElCategories}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            open={openCategories}
+            onClose={handleCloseCategories}
+          >
+            <MenuItem onClick={handleClose}>Communication (2)</MenuItem>
+            <MenuItem onClick={handleClose}>Health (15)</MenuItem>
+            <MenuItem onClick={handleClose}>Kids (10)</MenuItem>
+            <MenuItem onClick={handleClose}>Working Life (5)</MenuItem>
+
+          </Menu>
         </Toolbar>
         <div className={classes.search}>
           <InputBase
