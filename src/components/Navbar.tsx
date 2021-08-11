@@ -35,26 +35,32 @@ const useStyles = makeStyles((theme: Theme) =>
       '&:hover': {
         backgroundColor: alpha(theme.palette.common.white, 0.25),
       },
-      marginLeft: 0,
-      width: '100%',
+      marginBottom: 10,
+      height: 45,
       marginRight: theme.spacing(2),
+      marginLeft: theme.spacing(2),
       [theme.breakpoints.up('sm')]: {
         marginLeft: theme.spacing(1),
-        width: 'auto',
+        width: '50ch'
       },
+    },
+    searchIcon: {
+      position: 'absolute',
+      right: 0,
+      top: 0
     },
     inputRoot: {
       color: 'inherit',
 
     },
     inputInput: {
-      padding: theme.spacing(1, 1, 1, 0),
+      padding: theme.spacing(1.8, 1, 1, 0),
       // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(2)}px)`,
       transition: theme.transitions.create('width'),
-      width: '100%',
+      width: '75vw',
       [theme.breakpoints.up('sm')]: {
-        width: '20ch',
+        width: '40ch',
         '&:focus': {
           width: '40ch',
         },
@@ -144,7 +150,7 @@ export default function Navbar() {
             }}
             inputProps={{ 'aria-label': 'search' }}
           />
-          <IconButton type="submit"  aria-label="search validation">
+          <IconButton type="submit" className={classes.searchIcon} aria-label="search validation">
             <SearchIcon style={{ color: 'white' }} />
           </IconButton>
         </div>
