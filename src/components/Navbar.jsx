@@ -1,5 +1,5 @@
-import React from 'react';
-import { createStyles, alpha, makeStyles, Theme } from '@material-ui/core/styles';
+import React, {useState} from 'react';
+import { createStyles, alpha, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -18,7 +18,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import ConnectionForm from './ConnectionForm';
 import Button from '@material-ui/core/Button';
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
       flexGrow: 1,
@@ -74,20 +74,20 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function Navbar() {
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [anchorElCategories, setAnchorElCategories] = React.useState<null | HTMLElement>(null);
+  const [auth, setAuth] = useState(true);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorElCategories, setAnchorElCategories] = useState(null);
   const open = Boolean(anchorEl);
   const openCategories = Boolean(anchorElCategories);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event) => {
     setAuth(event.target.checked);
   };
 
-  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
+  const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleMenuCategories = (event: React.MouseEvent<HTMLElement>) => {
+  const handleMenuCategories = (event) => {
     setAnchorElCategories(event.currentTarget);
   };
 
@@ -115,8 +115,8 @@ export default function Navbar() {
             aria-haspopup="true">
             Categories
           </Button>
-          <Typography variant="h6" className={classes.title}>
-            Accueil
+          <Typography variant="h6" >
+            Logo
           </Typography>
 
           {/* If user is connected */}

@@ -1,18 +1,19 @@
 import React from 'react';
 import clsx from 'clsx';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import { IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import HomeIcon from '@material-ui/icons/Home';
+import GroupIcon from '@material-ui/icons/Group';
+import { Link } from "react-router-dom";
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles((theme) =>
   createStyles({
     menuButton: {
       marginRight: theme.spacing(2),
@@ -25,9 +26,14 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
-type Anchor = 'top' | 'left' | 'bottom' | 'right';
+
+const links = [
+  { path: "/", name: "Home" },
+  { path: "/about", name: "About"}
+];
 
 export default function CustomDrawer() {
+  
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
@@ -35,43 +41,53 @@ export default function CustomDrawer() {
     bottom: false,
     right: false,
   });
-
-  const toggleDrawer = (anchor: Anchor, open: boolean) => (
-    event: React.KeyboardEvent | React.MouseEvent,
+  const anchor = 'left';
+  const toggleDrawer = (anchor, open) => (
+    event
   ) => {
     if (
       event.type === 'keydown' &&
-      ((event as React.KeyboardEvent).key === 'Tab' ||
-        (event as React.KeyboardEvent).key === 'Shift')
+      ((event).key === 'Tab' ||
+        (event).key === 'Shift')
     ) {
       return;
     }
 
     setState({ ...state, [anchor]: open });
   };
+  // const AdapterLink = ((props, ref) => (
+  //   <Link innerRef={ref} {...props} />
+  // ));
+  const list = (anchor) => {
+    return (
+      <div
+        className={clsx(classes.list, {
+          [classes.fullList]: anchor === 'top' || anchor === 'bottom',
+        })}
+        role="presentation"
+        onClick={toggleDrawer(anchor, false)}
+        onKeyDown={toggleDrawer(anchor, false)}
+      >
+        <List>
+          {links.map((mapped, index) => (
+            <ListItem component={Link} to={mapped.path} button key={mapped.name} >
+              <ListItemIcon>
+                {index === 0 ? (
+                  <HomeIcon />
+                ) : (
+                  <GroupIcon />
+                )}
+              </ListItemIcon>
+              <ListItemText primary={mapped.name} />
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
 
-  const list = (anchor: Anchor) => (
-    <div
-      className={clsx(classes.list, {
-        [classes.fullList]: anchor === 'top' || anchor === 'bottom',
-      })}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
+      </div>
+    )
+  };
 
-    </div>
-  );
-  const anchor = 'left';
   return (
     <>
       <IconButton

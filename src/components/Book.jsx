@@ -1,13 +1,6 @@
 import React from 'react';
 
-interface IBook {
-  title: string;
-  author: string;
-  image?: string;
-
-}
-
-function Book({title, author, image}: IBook ) {
+function Book({title, author, image}) {
 
   return (
     <div>
