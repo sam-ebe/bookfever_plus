@@ -115,7 +115,7 @@ export default function Navbar() {
             aria-haspopup="true">
             Categories
           </Button>
-          <Typography variant="h6" >
+          <Typography variant="h6" className={classes.title} >
             Logo
           </Typography>
 

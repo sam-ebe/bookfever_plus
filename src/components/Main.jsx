@@ -3,7 +3,7 @@ import Home from "./../pages/home";
 import About from "./../pages/about";
 import { Switch, Route } from 'react-router-dom';
 
-function Main() {
+function Main(dataBooks) {
 
 const routes = [
   { path: "/", name: "Home", Component: Home },
@@ -12,7 +12,14 @@ const routes = [
 
 const pages = routes.map(({ path, name, Component }, index) => {
     return (
-      <Route key={name} path={path} component={Component} exact>
+      /* render method used instead of component={Component} in order to pass the props */
+      <Route key={name} 
+             path={path}
+             exact
+             render={() => (
+               <Component {...dataBooks} />
+             )}
+             >  
       </Route>
     );
   });

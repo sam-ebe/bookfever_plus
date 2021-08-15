@@ -1,8 +1,16 @@
 import React from "react";
+import Featured from './../components/Featured';
 
-function Home() {
+
+/* Displays Featured books : Recommended and Most Read */
+function Home({dataBooks}) {
+
+  let recommendedBooks = dataBooks.filter((book) => book.isRecommended === true );
+  let mostReadBooks = dataBooks.sort((a,b) => b.numberOfReadings - a.numberOfReadings).slice(0,3);
+
   return <div>
-    Home page content
+    <Featured books = {recommendedBooks} />
+    <Featured books = {mostReadBooks} />
   </div>;
 }
 
