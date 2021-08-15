@@ -10,15 +10,8 @@ export let dataBooks = [
     author: "Marijn Haverbeke",
     image: image1,
     isRecommended: true,
-    borrowedDate: ['Sat Jul 03 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)',
-                   'Sun Jul 18 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)',
-                   'Sun Aug 15 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)', ],
-    returnedDate: ['Sat Jul 17 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)',
-                   'Sun Aug 01 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)',
-                   'dummy',
-                   'dummy',
-                   'dummy',
-                   ],
+    borrowedDate: ['Sat Jul 03 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)'],
+    returnedDate: [],
     numberOfReadings : 0 /* =returnedDate.length(), default 0. When new entry pushed into returnedDate -> counter incremented by 1 */
 
   },
@@ -30,10 +23,22 @@ export let dataBooks = [
     isRecommended: false,
     borrowedDate: ['Sat Jul 03 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)',
                    'Sun Jul 18 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)',
-                   'Sun Aug 15 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)', ],
+                   'Sun Aug 15 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)',
+                   'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy', 
+                   'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy', 
+                   'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy', 
+                   'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy', 
+                   'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy' 
+                  ],
     returnedDate: ['Sat Jul 17 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)',
-                   'Sun Aug 01 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)', ],
-    numberOfReadings : 1 /* =returnedDate.length() */
+                   'Sun Aug 01 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)',
+                  'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy', 
+                  'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy', 
+                  'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy', 
+                  'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy', 
+                  'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy' 
+                ],
+    numberOfReadings : 52 /* =returnedDate.length() */
   },
 
   {
@@ -43,11 +48,9 @@ export let dataBooks = [
     image: image3,
     isRecommended: true,
     borrowedDate: ['Sat Jul 03 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)',
-                   'Sun Jul 18 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)',
-                   'Sun Aug 15 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)', ],
-    returnedDate: ['Sat Jul 17 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)',
-                   'Sun Aug 01 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)', ],
-    numberOfReadings : 52 /* =returnedDate.length() */
+                   'Sun Jul 18 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)'],
+    returnedDate: ['Sat Jul 17 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)'],
+    numberOfReadings : 1 
   },
   {
     id: 4,
@@ -57,10 +60,21 @@ export let dataBooks = [
     isRecommended: true,
     borrowedDate: ['Sat Jul 03 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)',
                    'Sun Jul 18 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)',
-                   'Sun Aug 15 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)', ],
+                   'Sun Aug 15 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)',
+                   'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy', 
+                   'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy', 
+                   'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy', 
+                   'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy', 
+                   'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy'
+                  ],
     returnedDate: ['Sat Jul 17 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)',
                    'Sun Aug 01 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)',
-                   'Sun Aug 22 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)' ],
+                   'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy', 
+                   'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy', 
+                   'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy', 
+                   'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy', 
+                   'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy'
+                  ],
     numberOfReadings : 52 /* =returnedDate.length() */
   },
 ];
