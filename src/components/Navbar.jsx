@@ -17,7 +17,8 @@ import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import ConnectionForm from './ConnectionForm';
 import Button from '@material-ui/core/Button';
-
+import Search from './Search';
+import logo from './../images/logo.png'
 const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
@@ -26,25 +27,36 @@ const useStyles = makeStyles((theme) =>
     menuButton: {
       marginRight: theme.spacing(2),
     },
-    title: {
+    categories: {
       flexGrow: 1,
       marginLeft: 10,
-      textAlign: 'center' 
+    },
+    logo: {
+      maxWidth: 35
+    },
+    searchWrapper: {
+      width: '100%',
+      [theme.breakpoints.up('sm')]: {
+        width: '40ch',
+      },
     },
     search: {
       position: 'relative',
       borderRadius: theme.shape.borderRadius,
-      backgroundColor: alpha(theme.palette.common.white, 0.15),
+      backgroundColor: alpha(theme.palette.common.white, 0.70),
       '&:hover': {
-        backgroundColor: alpha(theme.palette.common.white, 0.25),
+        backgroundColor: alpha(theme.palette.common.white, 0.95),
       },
       marginBottom: 10,
-      height: 45,
+      //height: 45,
       marginRight: theme.spacing(2),
       marginLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2),
+      paddingLeft: theme.spacing(2),
       [theme.breakpoints.up('sm')]: {
+        justifyContent: 'center',
         marginLeft: theme.spacing(1),
-        width: '50ch'
+        width: '40ch'
       },
     },
     searchIcon: {
@@ -52,27 +64,10 @@ const useStyles = makeStyles((theme) =>
       right: 0,
       top: 0
     },
-    inputRoot: {
-      color: 'inherit',
-
-    },
-    inputInput: {
-      padding: theme.spacing(1.8, 1, 1, 0),
-      // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(2)}px)`,
-      transition: theme.transitions.create('width'),
-      width: '75vw',
-      [theme.breakpoints.up('sm')]: {
-        width: '40ch',
-        '&:focus': {
-          width: '40ch',
-        },
-      },
-    },
   }),
 );
 
-export default function Navbar() {
+export default function Navbar(dataBooks) {
   const classes = useStyles();
   const [auth, setAuth] = useState(true);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -109,16 +104,19 @@ export default function Navbar() {
       <AppBar position="static">
         <Toolbar>
           <CustomDrawer />
-          <Button variant="outlined" color="inherit" onClick={handleMenuCategories} 
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true">
-            Categories
-          </Button>
-          <Typography variant="h6" className={classes.title} >
-            Logo
+          <img className={classes.logo} src={logo} alt="logo" />
+          <Typography variant="h6" >
+            BookF+
           </Typography>
-
+          <div className={classes.categories}>
+            <Button variant="outlined" color="inherit" onClick={handleMenuCategories} 
+              
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true">
+              Categories
+            </Button>
+          </div>
           {/* If user is connected */}
           {(auth === true) ? 
             <div>
@@ -183,18 +181,10 @@ export default function Navbar() {
 
           </Menu>
         </Toolbar>
-        <div className={classes.search}>
-          <InputBase
-            placeholder="Search…"
-            classes={{
-              root: classes.inputRoot,
-              input: classes.inputInput,
-            }}
-            inputProps={{ 'aria-label': 'search' }}
-          />
-          <IconButton type="submit" className={classes.searchIcon} aria-label="search validation">
-            <SearchIcon style={{ color: 'white' }} />
-          </IconButton>
+        <div className={classes.searchWrapper}>
+          <div className={classes.search}>
+            <Search {...dataBooks}/>
+          </div>
         </div>
       </AppBar>
     </div>
