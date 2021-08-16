@@ -12,8 +12,8 @@ export let dataBooks = [
     isRecommended: true,
     borrowedDate: ['Sat Jul 03 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)'],
     returnedDate: [],
-    numberOfReadings : 0 /* =returnedDate.length(), default 0. When new entry pushed into returnedDate -> counter incremented by 1 */
-
+    numberOfReadings : 0, /* =returnedDate.length(), default 0. When new entry pushed into returnedDate -> counter incremented by 1 */
+    categorie: ['Kids', 'Communication']
   },
   {
     id: 2,
@@ -38,7 +38,8 @@ export let dataBooks = [
                   'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy', 
                   'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy' 
                 ],
-    numberOfReadings : 52 /* =returnedDate.length() */
+    numberOfReadings : 52,
+    categorie: ['Working Life', 'Kids', 'Health']            
   },
 
   {
@@ -50,7 +51,8 @@ export let dataBooks = [
     borrowedDate: ['Sat Jul 03 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)',
                    'Sun Jul 18 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)'],
     returnedDate: ['Sat Jul 17 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)'],
-    numberOfReadings : 1 
+    numberOfReadings : 1,
+    categorie: ['Health']
   },
   {
     id: 4,
@@ -75,6 +77,7 @@ export let dataBooks = [
                    'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy', 
                    'dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy','dummy'
                   ],
-    numberOfReadings : 52 /* =returnedDate.length() */
+    numberOfReadings : 52,
+    categorie: ['Programming']
   },
 ];

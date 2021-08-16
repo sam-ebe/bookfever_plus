@@ -48,7 +48,6 @@ const useStyles = makeStyles((theme) =>
         backgroundColor: alpha(theme.palette.common.white, 0.95),
       },
       marginBottom: 10,
-      //height: 45,
       marginRight: theme.spacing(2),
       marginLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
@@ -67,7 +66,7 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 
-export default function Navbar(dataBooks) {
+export default function Navbar({dataBooks}) {
   const classes = useStyles();
   const [auth, setAuth] = useState(true);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -92,6 +91,29 @@ export default function Navbar(dataBooks) {
   const handleCloseCategories = () => {
     setAnchorElCategories(null);
   };
+
+  let mapOfCategories = new Map();
+
+  let categoriesCount = dataBooks.map((book) => {
+    if (book.categorie.length > 0) {
+      book.categorie.map((cat) => {
+        if (mapOfCategories.has(cat)) {
+          mapOfCategories.set(cat, mapOfCategories.get(cat) + 1);
+        } else {
+          mapOfCategories.set(cat, 1);
+        }
+        return false;
+      });
+    }
+    return false;
+  });
+
+  let ArrayOfCategories = Array.from(mapOfCategories);
+  let mapItems = ArrayOfCategories.map((item) => {
+    return (
+      <MenuItem onClick={handleCloseCategories}>{item[0]} ({item[1]})</MenuItem>
+    )
+  });  
 
   return (
     <div className={classes.root}>
@@ -174,16 +196,12 @@ export default function Navbar(dataBooks) {
             open={openCategories}
             onClose={handleCloseCategories}
           >
-            <MenuItem onClick={handleClose}>Communication (2)</MenuItem>
-            <MenuItem onClick={handleClose}>Health (15)</MenuItem>
-            <MenuItem onClick={handleClose}>Kids (10)</MenuItem>
-            <MenuItem onClick={handleClose}>Working Life (5)</MenuItem>
-
+            {mapItems}
           </Menu>
         </Toolbar>
         <div className={classes.searchWrapper}>
           <div className={classes.search}>
-            <Search {...dataBooks}/>
+            <Search dataBooks={dataBooks}/>
           </div>
         </div>
       </AppBar>
