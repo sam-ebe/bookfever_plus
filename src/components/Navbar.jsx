@@ -19,6 +19,9 @@ import ConnectionForm from './ConnectionForm';
 import Button from '@material-ui/core/Button';
 import Search from './Search';
 import logo from './../images/logo.png'
+import { Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import CategoriesResults from '../pages/categoriesResults';
 const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
@@ -30,6 +33,17 @@ const useStyles = makeStyles((theme) =>
     categories: {
       flexGrow: 1,
       marginLeft: 10,
+    },
+    logoWrapper: {
+      display: 'flex',
+      justifyContent: 'center',
+      
+      marginTop: theme.spacing(1),
+      '& > *': {
+        padding: theme.spacing(1),
+        letterSpacing: theme.spacing(0.8),
+        fontWeight: 700
+      } 
     },
     logo: {
       maxWidth: 35
@@ -95,8 +109,8 @@ export default function Navbar({dataBooks}) {
   let mapOfCategories = new Map();
 
   let categoriesCount = dataBooks.map((book) => {
-    if (book.categorie.length > 0) {
-      book.categorie.map((cat) => {
+    if (book.categories.length > 0) {
+      book.categories.map((cat) => {
         if (mapOfCategories.has(cat)) {
           mapOfCategories.set(cat, mapOfCategories.get(cat) + 1);
         } else {
@@ -111,9 +125,21 @@ export default function Navbar({dataBooks}) {
   let ArrayOfCategories = Array.from(mapOfCategories);
   let mapItems = ArrayOfCategories.map((item) => {
     return (
-      <MenuItem onClick={handleCloseCategories}>{item[0]} ({item[1]})</MenuItem>
+      <>
+        <Route key={item[0]} 
+          path={"/"+item[0].replace(' ', '_').toLowerCase()}
+          exact
+          render={() => (
+            <CategoriesResults {...dataBooks} />
+          )}
+          >  
+        </Route>
+        <MenuItem component={Link} to={"/"+item[0].replace(' ', '_').toLowerCase()} onClick={handleCloseCategories} key={item[0]}>{item[0]} ({item[1]})</MenuItem>
+
+      </>
     )
   });  
+
 
   return (
     <div className={classes.root}>
@@ -124,12 +150,14 @@ export default function Navbar({dataBooks}) {
         />
       </FormGroup>
       <AppBar position="static">
+        <div className={classes.logoWrapper}>
+          <img className={classes.logo} src={logo} alt="logo" />
+          <Typography variant="h5" >
+            BOOK FEVER+
+          </Typography>
+        </div>
         <Toolbar>
           <CustomDrawer />
-          <img className={classes.logo} src={logo} alt="logo" />
-          <Typography variant="h6" >
-            BookF+
-          </Typography>
           <div className={classes.categories}>
             <Button variant="outlined" color="inherit" onClick={handleMenuCategories} 
               
@@ -195,7 +223,7 @@ export default function Navbar({dataBooks}) {
             }}
             open={openCategories}
             onClose={handleCloseCategories}
-          >
+          > 
             {mapItems}
           </Menu>
         </Toolbar>
