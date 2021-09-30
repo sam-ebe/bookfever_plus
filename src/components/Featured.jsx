@@ -1,9 +1,12 @@
 import React from 'react'
+import Title from './Title';
 
-function Featured() {
+function Featured({title}) {
+
   return (
     <div>
-      My featured block
+      <Title title={title}/>
+      Book images Here
     </div>
   )
 }
