@@ -2,17 +2,16 @@ import React from "react";
 import Typography from '@mui/material/Typography';
 
 function Title({title}) {
-  return <>
+  return <div className="featured__title">
             <Typography 
               variant="h2" 
-              gutterBottom 
               component="h2"
-              sx={{fontSize: "1.625rem", fontFamily: "Playfair Display,serif", textTransform: "uppercase"}}
-              className="title_with_divider"
+              sx={{fontSize: "1.625rem", fontFamily: "Playfair Display,serif", textTransform: "uppercase", marginBottom: "30px"}}
+              className="featured__title__with_divider"
             >
               {title}
-            </Typography>;
-         </>
+            </Typography>
+         </div>
 
 }
 

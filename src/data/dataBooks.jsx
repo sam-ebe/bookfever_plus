@@ -2,6 +2,9 @@ import image1 from "./../images/eloquent.jpg";
 import image2 from "./../images/good.jpg";
 import image3 from "./../images/kids.jpg";
 import image4 from "./../images/clean.png";
+import image5 from "./../images/road.jpg";
+import image6 from "./../images/effective.jpg";
+import image7 from "./../images/laws.jpg";
 
 export let dataBooks = [
   {
@@ -79,5 +82,38 @@ export let dataBooks = [
                   ],
     numberOfReadings : 52,
     categories: ['Programming']
+  },
+  {
+    id: 5,
+    title: "The Road to React",
+    author: "Robin Wieruch",
+    image: image5,
+    isRecommended: true,
+    borrowedDate: ['Sat Jul 03 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)'],
+    returnedDate: [],
+    numberOfReadings : 0, /* =returnedDate.length(), default 0. When new entry pushed into returnedDate -> counter incremented by 1 */
+    categories: ['Kids', 'Communication']
+  },
+  {
+    id: 6,
+    title: "Effective Typescript",
+    author: "Dan Vanderkam",
+    image: image6,
+    isRecommended: true,
+    borrowedDate: ['Sat Jul 03 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)'],
+    returnedDate: [],
+    numberOfReadings : 0, /* =returnedDate.length(), default 0. When new entry pushed into returnedDate -> counter incremented by 1 */
+    categories: ['Kids', 'Communication']
+  },
+  {
+    id: 7,
+    title: "Laws of UX",
+    author: "Jon Yablonski",
+    image: image7,
+    isRecommended: true,
+    borrowedDate: ['Sat Jul 03 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)'],
+    returnedDate: [],
+    numberOfReadings : 0, /* =returnedDate.length(), default 0. When new entry pushed into returnedDate -> counter incremented by 1 */
+    categories: ['Kids', 'Communication']
   },
 ];
