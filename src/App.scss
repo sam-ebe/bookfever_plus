@@ -1,5 +1,5 @@
 body {
-  background: "#F6F6F6";
+  background: #f6f6f6;
 }
 .home {
   width: 100%;
@@ -74,6 +74,10 @@ body {
     }
     h3 {
       font-family: "Playfair Display,serif";
+      color: #2b2b2b;
+    }
+    .author {
+      color: #616161;
     }
   }
 }
@@ -92,6 +96,10 @@ body {
 
 .dialog {
   position: relative;
+  h3 {
+    font-family: "Playfair Display,serif";
+    color: #2b2b2b;
+  }
   .dialog__close {
     position: absolute;
     right: 20px;
@@ -100,5 +108,45 @@ body {
   .dialog__container {
     display: flex;
     max-width: 1000px;
+  }
+}
+
+@media (min-width: 1px) {
+  .dialog__image {
+    margin: 20px 10px 10px 10px;
+    padding-top: 25px;
+    height: 100%;
+  }
+  .dialog__container {
+    flex-direction: column;
+    .dialog__infos__content h3:first-child {
+      font-size: 1.6rem;
+      line-height: 1.2;
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .dialog__image {
+    margin: 0 0 20px 20px;
+    min-width: 400px;
+    min-height: 600px;
+  }
+  .dialog__container {
+    display: flex;
+    flex-direction: row;
+    max-width: 1000px;
+    .dialog__infos__content {
+      h3:first-child {
+        font-size: 2.5rem;
+        line-height: 1.2;
+        color: #2b2b2b;
+      }
+      .author {
+        font-size: 1.2rem;
+        color: #616161;
+        padding-bottom: 20px;
+      }
+    }
   }
 }
