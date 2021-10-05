@@ -147,6 +147,13 @@ body {
         color: #616161;
         padding-bottom: 20px;
       }
+      .categories {
+        font-weight: 700;
+        margin-top: 25px;
+        .categories__item {
+          font-weight: 400;
+        }
+      }
     }
   }
 }
