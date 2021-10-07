@@ -92,7 +92,7 @@ export let dataBooks = [
     borrowedDate: ['Sat Jul 03 2021 16:39:06 GMT+0200 (heure d’été d’Europe centrale)'],
     returnedDate: [],
     numberOfReadings : 0, /* =returnedDate.length(), default 0. When new entry pushed into returnedDate -> counter incremented by 1 */
-    categories: ['Kids', 'Communication']
+    categories: []
   },
   {
     id: 6,

@@ -3,7 +3,6 @@ import BookCard from './BookCard';
 import Title from './Title';
 
 function Featured({title, dataBooks}) {
-console.log(dataBooks);
 
   return (
     <section className="featured">
